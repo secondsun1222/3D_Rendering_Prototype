@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Default">
+      <UniqueIdentifier>{6cca89d1-ef8e-4004-b68a-668b54e01ff4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{769e9488-5803-456c-b71e-7f66affe03bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{d98899df-7fe1-4e0f-8b11-c92b7a9bd7eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\02 Basic">
+      <UniqueIdentifier>{8f5bba42-d80b-450f-b271-345330c0f8fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\01 Frame">
+      <UniqueIdentifier>{eed8ab53-347f-4f4d-be24-083ba9096929}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\01 Frame\Time Manager">
+      <UniqueIdentifier>{ce4b2e2e-3da6-452a-adae-eed66ac9f4af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\00 Windows/Monitors">
+      <UniqueIdentifier>{d64fd4ab-458b-4c88-9f22-be90429f71cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\00 Windows/Monitors\Monitors">
+      <UniqueIdentifier>{1c48faf6-19a9-45cb-a564-360f623d17a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\00 Windows/Monitors\Windows">
+      <UniqueIdentifier>{112389bf-c6af-4c6a-a0b7-be6cc0c3a902}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\00 Windows/Monitors\Manager">
+      <UniqueIdentifier>{d0525d04-9d28-45b7-9265-5b04cba71176}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\02 Basic\00 Vectors">
+      <UniqueIdentifier>{7b7d37da-e0d4-4c65-bc47-fbd44d73d503}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\02 Basic\01 Meshes">
+      <UniqueIdentifier>{fa5b5be7-1a20-4eda-a20c-8c0babffc85d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03 Object">
+      <UniqueIdentifier>{ae7aad1a-8668-4907-bb7c-2a9847674c2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03 Object\00 Object">
+      <UniqueIdentifier>{43adcb3a-7d0c-4057-a1e6-5c9df52d2ce6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03 Object\01 Property">
+      <UniqueIdentifier>{c159d876-5302-48d6-ac38-16b30cc3c0c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03 Object\01 Property\00 Base">
+      <UniqueIdentifier>{15b6ed0f-1d0e-452d-a16e-7d4eb9334e27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03 Object\01 Property\01 Mesh">
+      <UniqueIdentifier>{1e0f15fd-88f6-49be-9ec7-04aedd21c838}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03 Object\02 Camera">
+      <UniqueIdentifier>{e264f306-b754-4dd2-bb36-646f41cdee9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04 Scene">
+      <UniqueIdentifier>{b559be69-d71c-48af-aaf4-392331b8ccc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\01 Frame\Input Manager">
+      <UniqueIdentifier>{d7e69183-5db3-4a4c-a9e4-98b55385fc9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\02 Basic\02 Graphic Tools">
+      <UniqueIdentifier>{ae31237e-4578-4ae4-9dbc-e2f619b99c67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03 Object\03 Light Manager">
+      <UniqueIdentifier>{636e80ff-c693-40c6-b2e5-5aa697d4bbd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03 Object\01 Property\02 Light">
+      <UniqueIdentifier>{43c86749-3e83-4f51-841b-43fd9f7bdb07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03 Object\01 Property\03TexturedMesh">
+      <UniqueIdentifier>{11e18f63-c635-4f20-8c1d-4c488350b683}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\99 Test">
+      <UniqueIdentifier>{c54bb6c4-c1f0-494c-b170-19eb6fda5ee7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\99 Test\00 Scene">
+      <UniqueIdentifier>{cd17227b-350f-472d-a163-41ef44454fc4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderTest.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowInstance.h">
+      <Filter>Engine\00 Windows/Monitors\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="MonitorInstance.h">
+      <Filter>Engine\00 Windows/Monitors\Monitors</Filter>
+    </ClInclude>
+    <ClInclude Include="WinMonManager.h">
+      <Filter>Engine\00 Windows/Monitors\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>Engine\01 Frame\Time Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Quaternion.h">
+      <Filter>Engine\02 Basic\00 Vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="Vec3.h">
+      <Filter>Engine\02 Basic\00 Vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Engine\02 Basic\01 Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Vectors.h">
+      <Filter>Engine\02 Basic\00 Vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Engine\03 Object\00 Object</Filter>
+    </ClInclude>
+    <ClInclude Include="PropertyBase.h">
+      <Filter>Engine\03 Object\01 Property\00 Base</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshProperty.h">
+      <Filter>Engine\03 Object\01 Property\01 Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Engine\03 Object\02 Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneBase.h">
+      <Filter>Engine\04 Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Engine\01 Frame\Input Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicTools.h">
+      <Filter>Engine\02 Basic\02 Graphic Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="LightManager.h">
+      <Filter>Engine\03 Object\03 Light Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="LightProperty.h">
+      <Filter>Engine\03 Object\01 Property\02 Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Properties.h">
+      <Filter>Engine\03 Object\01 Property</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturedMeshProperty.h">
+      <Filter>Engine\03 Object\01 Property\03TexturedMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturedMesh.h">
+      <Filter>Engine\02 Basic\01 Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Vec2.h">
+      <Filter>Engine\02 Basic\00 Vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene.h">
+      <Filter>Engine\99 Test\00 Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="TestObject.h">
+      <Filter>Engine\99 Test\00 Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="TestLightObject.h">
+      <Filter>Engine\99 Test\00 Scene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Default</Filter>
+    </Image>
+    <Image Include="RenderTest.ico">
+      <Filter>Default</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="RenderTest.rc">
+      <Filter>Default</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="RenderTest.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowInstance.cpp">
+      <Filter>Engine\00 Windows/Monitors\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="MonitorInstance.cpp">
+      <Filter>Engine\00 Windows/Monitors\Monitors</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMonManager.cpp">
+      <Filter>Engine\00 Windows/Monitors\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>Engine\01 Frame\Time Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Quaternion.cpp">
+      <Filter>Engine\02 Basic\00 Vectors</Filter>
+    </ClCompile>
+    <ClCompile Include="Vec3.cpp">
+      <Filter>Engine\02 Basic\00 Vectors</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Engine\02 Basic\01 Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Engine\03 Object\00 Object</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyBase.cpp">
+      <Filter>Engine\03 Object\01 Property\00 Base</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshProperty.cpp">
+      <Filter>Engine\03 Object\01 Property\01 Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Engine\03 Object\02 Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneBase.cpp">
+      <Filter>Engine\04 Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Engine\01 Frame\Input Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicTools.cpp">
+      <Filter>Engine\02 Basic\02 Graphic Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="LightManager.cpp">
+      <Filter>Engine\03 Object\03 Light Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="LightProperty.cpp">
+      <Filter>Engine\03 Object\01 Property\02 Light</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturedMeshProperty.cpp">
+      <Filter>Engine\03 Object\01 Property\03TexturedMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturedMesh.cpp">
+      <Filter>Engine\02 Basic\01 Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Vec2.cpp">
+      <Filter>Engine\02 Basic\00 Vectors</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScene.cpp">
+      <Filter>Engine\99 Test\00 Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="TestObject.cpp">
+      <Filter>Engine\99 Test\00 Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="TestLightObject.cpp">
+      <Filter>Engine\99 Test\00 Scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
