@@ -61,9 +61,6 @@
     <Filter Include="Engine\01 Frame\Input Manager">
       <UniqueIdentifier>{d7e69183-5db3-4a4c-a9e4-98b55385fc9d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\02 Basic\02 Graphic Tools">
-      <UniqueIdentifier>{ae31237e-4578-4ae4-9dbc-e2f619b99c67}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\03 Object\03 Light Manager">
       <UniqueIdentifier>{636e80ff-c693-40c6-b2e5-5aa697d4bbd7}</UniqueIdentifier>
     </Filter>
@@ -78,6 +75,9 @@
     </Filter>
     <Filter Include="Engine\99 Test\00 Scene">
       <UniqueIdentifier>{cd17227b-350f-472d-a163-41ef44454fc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\02 Basic\99 Graphic Tools">
+      <UniqueIdentifier>{ae31237e-4578-4ae4-9dbc-e2f619b99c67}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -139,7 +139,7 @@
       <Filter>Engine\01 Frame\Input Manager</Filter>
     </ClInclude>
     <ClInclude Include="GraphicTools.h">
-      <Filter>Engine\02 Basic\02 Graphic Tools</Filter>
+      <Filter>Engine\02 Basic\99 Graphic Tools</Filter>
     </ClInclude>
     <ClInclude Include="LightManager.h">
       <Filter>Engine\03 Object\03 Light Manager</Filter>
@@ -226,7 +226,7 @@
       <Filter>Engine\01 Frame\Input Manager</Filter>
     </ClCompile>
     <ClCompile Include="GraphicTools.cpp">
-      <Filter>Engine\02 Basic\02 Graphic Tools</Filter>
+      <Filter>Engine\02 Basic\99 Graphic Tools</Filter>
     </ClCompile>
     <ClCompile Include="LightManager.cpp">
       <Filter>Engine\03 Object\03 Light Manager</Filter>

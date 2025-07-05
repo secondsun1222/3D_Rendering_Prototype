@@ -33,12 +33,12 @@ void Object::applyOrigin()
 {
 	switch (origin) {
 	case Origin::WORLD:
-		originPosition = position;
-		originRotation = rotation;
+		worldPosition = position;
+		worldRotation = rotation;
 		break;
 	case Origin::PARENT:
-		originPosition = parent->originPosition + Quaternion::rotate(parent->originRotation, position);
-		originRotation = Quaternion::multiply(parent->originRotation, rotation);
+		worldPosition = parent->worldPosition + Quaternion::rotate(parent->worldRotation, position);
+		worldRotation = Quaternion::multiply(parent->worldRotation, rotation);
 		break;
 	}
 }
@@ -72,8 +72,8 @@ bool Object::addChild(Object* _child)
 Object::Object()
 	:position()
 	, rotation()
-	, originPosition()
-	, originRotation()
+	, worldPosition()
+	, worldRotation()
 	, origin(Origin::WORLD)
 	, parent(nullptr)
 {

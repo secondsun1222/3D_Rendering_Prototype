@@ -4,9 +4,9 @@ TexturedMesh::TexturedMesh(
 	std::vector<Vec3> _vertexList,
 	std::vector<Line> _lineList,
 	std::vector<UVFace> _UVFaceList,
-	std::vector<WCHAR*> _textureList)
+	std::vector<Material> _materialList)
 	:vertexList(_vertexList)
 	, lineList(_lineList)
 	, UVFaceList(_UVFaceList)
-	, textureList(_textureList)
+	, materialList(_materialList)
 {}

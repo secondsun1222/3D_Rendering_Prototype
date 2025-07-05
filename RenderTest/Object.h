@@ -22,8 +22,8 @@ public:
 	Quaternion rotation;
 
 public:
-	Vec3 originPosition;		// absolute position, origin applied
-	Quaternion originRotation;	// absolute rotation, origin applied
+	Vec3 worldPosition;		// absolute position, origin applied
+	Quaternion worldRotation;	// absolute rotation, origin applied
 
 public:
 	Origin origin;

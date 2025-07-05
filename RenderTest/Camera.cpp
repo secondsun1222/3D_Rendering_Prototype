@@ -124,233 +124,6 @@ void Camera::prerender() {
 	resetBuffers();
 }
 
-void Camera::renderMesh(Object* object, Mesh* mesh)	// render without light
-{
-	std::vector<Vec3> vertexTransformed;
-	std::vector<Vec3> vertexPixel;
-
-	for (std::vector<Vec3>::iterator vp = mesh->vertexList.begin(); vp != mesh->vertexList.end(); vp++) {
-
-		//calculate the relative position of vp to the camera
-		Vec3 v = *vp;
-		v = Quaternion::rotate(object->rotation, v);
-		v += object->position - this->position;
-		v = Quaternion::rotate(this->rotation.inverse(), v);
-		
-		Vec3 vTransform;
-		vTransform.x = v.x * projectionMatrix[0][0];
-		vTransform.y = v.y * projectionMatrix[1][1];
-		vTransform.z = v.z * projectionMatrix[2][2] + 1 * projectionMatrix[3][2];
-
-		double w = v.z * projectionMatrix[2][3];
-		vTransform /= w;
-
-		vertexTransformed.push_back(vTransform);
-
-		Vec3 vPixel;
-		vPixel.x = (vTransform.x + 0.5) * resolution.x;
-		vPixel.y = (vTransform.y + 0.5) * resolution.y;
-		vPixel.z = vTransform.z;
-
-		vertexPixel.push_back(vPixel);
-	}
-
-	// vertex debugging
-	/*
-	for (std::vector<Vec3>::iterator vp = vertexTransformed.begin(); vp != vertexTransformed.end(); vp++) {
-
-		if (vp->z <= 0 || 1 <= vp->z)continue;
-
-		int pixelX = (int)((vp->x + 0.5) * resolution.x);
-		int pixelY = (int)((vp->y + 0.5) * resolution.y);
-		int distance = (int)(vp->z * 255);
-
-		for (int py = pixelY - 5; py < pixelY + 5; py++) {
-			for (int px = pixelX - 5; px < pixelX + 5; px++) {
-				setRGB(py, px, RGB(255 - distance, 255 - distance, 255 - distance));
-			}
-		}
-
-	}*/
-
-	// render mesh with pseudo scan line
-	/*
-	for (std::vector<Face>::iterator fp = mesh->faceList.begin(); fp != mesh->faceList.end(); fp++) {
-
-		Vec3 vArr[] = { vertexPixel[fp->v1], vertexPixel[fp->v2], vertexPixel[fp->v3] };
-
-		bool doRender = true;
-		//check if any vertex is out of camera's near or far plane
-		for (int i = 0; i < sizeof(vArr) / sizeof(Vec3); i++) {
-			if (vArr[i].z < 0 || 1 < vArr[i].z) {
-				doRender = false;
-				break;
-			}
-		}
-		if (!doRender)continue;
-
-
-		std::sort(vArr, vArr + 3, SortVec3ByY);
-
-		Vec3 boundMin,
-			boundMax;
-		BoundRectVec3(vArr, 3, boundMin, boundMax);
-
-		// set rectangle boundary to perform psuedo scanline algorithm below
-		int boundLeft = (int)boundMin.x,
-			boundRight = (int)boundMax.x,
-
-			boundBottom = max((int)boundMin.y, 0),
-			boundMid = round((int)vArr[1].y, 0, resolution.y - 1),
-			boundTop = min((int)boundMax.y, resolution.y - 1);
-
-
-		double zAvg = (vArr[0].z + vArr[1].z + vArr[2].z) / 3;
-		int dist = 255 - zAvg * 255;
-		COLORREF colortemp = RGB(dist, dist, dist);
-
-		// pseudo scanline algorithm
-		// bounding for gap inefficient
-		// ???
-		// accurate to the pixel
-
-		double	xInter1, xInter2;	// intersections of edges and scan line
-		double increm1, increm2;	// increments of intersections
-
-		// bottom triangle
-		if (boundBottom != boundMid) {	// skip when triangle is flat
-
-			increm1 = (vArr[1].x - vArr[0].x) / (vArr[1].y - vArr[0].y);
-			increm2 = (vArr[2].x - vArr[0].x) / (vArr[2].y - vArr[0].y);
-
-			// ensure xInter1 <= xInter2
-			if (increm1 > increm2) {	// swap increms
-				double temp = increm1;
-				increm1 = increm2;
-				increm2 = temp;
-			}
-
-			// scan?
-			for (int py = boundBottom; py < boundMid; py++) {
-				double gap = (((double)py) - vArr[0].y);
-				if (gap < 0)gap = 0;
-				if (gap > vArr[1].y - vArr[0].y)gap = vArr[1].y - vArr[0].y;
-
-				xInter1 = round(vArr[0].x + gap * increm1, 0, resolution.x - 1);
-				xInter2 = round(vArr[0].x + gap * increm2, 0, resolution.x - 1);
-
-				for (int px = (int)xInter1; px < (int)xInter2; px++) {
-					if (zBuffer[py * resolution.x + px] <= 0.0f ||
-						zBuffer[py * resolution.x + px] > zAvg) {
-						zBuffer[py * resolution.x + px] = zAvg;
-						setRGB(py, px, colortemp);
-					}
-				}
-			}
-		}
-		// top triangle
-		if (boundTop != boundMid) {	// skip when triangle is flat
-
-			increm1 = (vArr[1].x - vArr[2].x) / (vArr[1].y - vArr[2].y);
-			increm2 = (vArr[0].x - vArr[2].x) / (vArr[0].y - vArr[2].y);
-
-			// ensure xInter1 >= xInter2
-			if (increm1 < increm2) {	// swap increms
-				double temp = increm1;
-				increm1 = increm2;
-				increm2 = temp;
-			}
-
-			// scan?
-			for (int py = boundTop; py >= boundMid; py--) {
-				double gap = (((double)py) - vArr[2].y);
-				if (gap > 0)gap = 0;
-				if (gap < vArr[1].y - vArr[2].y)gap = vArr[1].y - vArr[2].y;
-
-				xInter1 = round(vArr[2].x + gap * increm1, 0, resolution.x - 1);
-				xInter2 = round(vArr[2].x + gap * increm2, 0, resolution.x - 1);
-
-				for (int px = (int)xInter1; px < (int)xInter2; px++) {
-					if (zBuffer[py * resolution.x + px] <= 0.0f ||
-						zBuffer[py * resolution.x + px] > zAvg) {
-						zBuffer[py * resolution.x + px] = zAvg;
-						setRGB(py, px, colortemp);
-					}
-				}
-			}
-		}
-
-	}
-	*/
-
-	// render mesh
-	for (std::vector<Face>::iterator fp = mesh->faceList.begin(); fp != mesh->faceList.end(); fp++) {
-
-		Vec3 vArr[] = { vertexPixel[fp->v1], vertexPixel[fp->v2], vertexPixel[fp->v3] };
-
-		//check if any vertex is out of camera's near or far plane
-		bool doRender = true;
-		for (int i = 0; i < sizeof(vArr) / sizeof(Vec3); i++) {
-			if (vArr[i].z < 0 || 1 < vArr[i].z) {
-				doRender = false;
-				break;
-			}
-		}
-		if (!doRender)continue;
-
-
-		std::sort(vArr, vArr + 3, SortVec3ByY);
-
-		Vec3 boundMin,
-			boundMax;
-		BoundRectVec3(vArr, 3, boundMin, boundMax);
-
-		// set rectangle boundary to perform psuedo scanline algorithm below
-		int boundLeft = max((int)boundMin.x, 0),
-			boundRight = min((int)boundMax.x, resolution.x - 1),
-
-			boundBottom = max((int)boundMin.y, 0),
-			boundTop = min((int)boundMax.y, resolution.y - 1);
-
-		Vec3 d01 = vArr[1] - vArr[0];
-		Vec3 d02 = vArr[2] - vArr[0];
-
-		if (d01.x * d02.y == d02.x * d01.y)continue;	// vertices are on same line
-
-		for (int py = boundBottom; py <= boundTop; py++) {
-			for (int px = boundLeft; px <= boundRight; px++) {
-				double w0, w1, w2;	// weight of each vertex for the pixel
-				Vec3 d0p = Vec3{ (double)(px),(double)(py) } - vArr[0];	// vector from first vertex of triangle to pixel
-
-				// from solving the equations
-				//		w1 * d01.x + w2 * d02.x = d0p.x
-				//		w1 * d01.y + w2 * d02.y = d0p.y
-				//		w0 + w1 + w2 = 1
-				w1 = (d0p.x * d02.y - d02.x * d0p.y) / (d01.x * d02.y - d02.x * d01.y);
-				w2 = (d0p.x * d01.y - d01.x * d0p.y) / (d02.x * d01.y - d01.x * d02.y);
-				w0 = 1 - (w1 + w2);
-
-				if (w0 < 0 || w1 < 0 || w2 < 0) continue;	// pixel is not on triangle
-
-				double pz = vArr[0].z * w0 + vArr[1].z * w1 + vArr[2].z * w2;
-
-				if (zBuffer[py * resolution.x + px] <= 0.0f ||
-					zBuffer[py * resolution.x + px] > pz) {
-					zBuffer[py * resolution.x + px] = pz;
-					setRGB(py, px,
-						RGB(
-							(1 - pz) * 255,
-							(1 - pz) * 255,
-							(1 - pz) * 255
-						)
-					);
-				}
-			}
-		}
-
-	}
-}
-
 void Camera::renderMesh(Object* object, Mesh* mesh, std::vector<Object*>* lights)
 {
 	std::vector<Vec3> vertexRelat;	// relative position to the camera of each vertex
@@ -517,9 +290,9 @@ void Camera::renderMesh(Object* object, TexturedMesh* mesh, std::vector<Object*>
 
 		// calculate the relative position of vp to the camera
 		Vec3 vRelat = *vp;
-		vRelat = Quaternion::rotate(object->originRotation, vRelat);
-		vRelat += object->originPosition - this->originPosition;
-		vRelat = Quaternion::rotate(this->originRotation.inverse(), vRelat);
+		vRelat = Quaternion::rotate(object->worldRotation, vRelat);
+		vRelat += object->worldPosition - this->worldPosition;
+		vRelat = Quaternion::rotate(this->worldRotation.inverse(), vRelat);
 
 		vertexRelat.push_back(vRelat);
 
@@ -550,14 +323,19 @@ void Camera::renderMesh(Object* object, TexturedMesh* mesh, std::vector<Object*>
 	);
 
 	int curTexture = -1;
+	Material* curMaterial = nullptr;
 
 	// render textured mesh with light
 	for (std::vector<UVFace>::iterator fp = mesh->UVFaceList.begin(); fp != mesh->UVFaceList.end(); fp++) {
 
 		if (curTexture != fp->texture) {
 			curTexture = fp->texture;
-			bool readTexture = readTextureData(mesh->textureList[fp->texture]);
+			curMaterial = &mesh->materialList[fp->texture];
+			bool readTexture = readTextureData(curMaterial->texture);
+			// load next texture
 		}
+
+		if (curMaterial == nullptr) continue;
 
 		Vec3 vArrRelat[] = { vertexRelat[fp->v1], vertexRelat[fp->v2], vertexRelat[fp->v3] };
 		Vec3 vArrTrans[] = { vertexTrans[fp->v1], vertexTrans[fp->v2], vertexTrans[fp->v3] };
@@ -610,6 +388,7 @@ void Camera::renderMesh(Object* object, TexturedMesh* mesh, std::vector<Object*>
 				Vec3 d02Proj = d02Relat + vpUnitRelat * (vArrRelat[0].z - vArrRelat[2].z);
 				Vec3 d0pProj = -vArrRelat[0] + vpUnitRelat * vArrRelat[0].z;
 
+				// barycentric coordinates
 				// from solving the equations
 				//		w1 * d01.x + w2 * d02.x = d0p.x
 				//		w1 * d01.y + w2 * d02.y = d0p.y
@@ -621,7 +400,6 @@ void Camera::renderMesh(Object* object, TexturedMesh* mesh, std::vector<Object*>
 				if (w0 < 0 || w1 < 0 || w2 < 0) {
 					continue;	// pixel is not on triangle
 				}
-
 
 				// calculate pixel's intersection with the triangle, and the transformed z depth
 				Vec3 pRelat = vArrRelat[0] * w0 + vArrRelat[1] * w1 + vArrRelat[2] * w2;
@@ -652,16 +430,16 @@ void Camera::renderMesh(Object* object, TexturedMesh* mesh, std::vector<Object*>
 					switch (lightProp->type) {
 					case LightType::POSITIONAL:
 					{
-						Vec3 pLightRelat = (*lp)->originPosition - this->originPosition;	// position of light seen by the camera
-						pLightRelat = Quaternion::rotate(this->originRotation.inverse(), pLightRelat);
+						Vec3 pLightRelat = (*lp)->worldPosition - this->worldPosition;	// position of light seen by the camera
+						pLightRelat = Quaternion::rotate(this->worldRotation.inverse(), pLightRelat);
 
 						double vplMag = (pLightRelat - pRelat).magnitude();
 						Vec3 vpl = (pLightRelat - pRelat).unit();	// direction vector from pixel to light
-						
-						
 
 						Vec3 vHalf = (-pRelat.unit() + vpl).unit();
-						double lightSpecular = pow(max(Vec3::dot(vHalf, vNormal), 0),4.0) 
+
+						double lightSpecular = pow(max(Vec3::dot(vHalf, vNormal), 0),4.0)
+							* curMaterial->shine
 							* lightProp->brightness
 							/ (vplMag * vplMag);
 						double lightDiffuse = max(Vec3::dot(vNormal, vpl), 0) 
@@ -718,29 +496,23 @@ inline void Camera::setRGB(int y, int x, COLORREF color) {
 
 bool Camera::update()
 {
-	/*
 	double deltaTime = INSTANCE(TimeManager)->DeltaTime;
 	POINT cursorMovement = INSTANCE(InputManager)->GetCursorMovement();
 
+	if (INSTANCE(InputManager)->GetKeyState(KEY::MOUSER) == KEY_STATE::HOLD)
+	{
+		Quaternion cursorRotationX = makeQuaternion(-cursorMovement.x / 10.0 * deltaTime, Vec3{ 0,1,0 });
+		rotation = Quaternion::multiply(cursorRotationX, rotation);
 
-	Quaternion cursorRotationX = makeQuaternion(-cursorMovement.x / 10.0 * deltaTime, Vec3{ 0,1,0 });
-	rotation = Quaternion::multiply(cursorRotationX, rotation);
 
-	Vec3 dir = Quaternion::rotate(rotation, { 1,0,0 });
-	Quaternion cursorRotationY = makeQuaternion(-cursorMovement.y / 10.0 * deltaTime, Vec3{ dir.x,0.0,dir.z }.unit());
-	rotation = Quaternion::multiply(cursorRotationY, rotation);
+		Vec3 dir = Quaternion::rotate(rotation, { 1,0,0 });
+		Quaternion cursorRotationY = makeQuaternion(-cursorMovement.y / 10.0 * deltaTime, Vec3{ dir.x,0.0,dir.z }.unit());
+		rotation = Quaternion::multiply(cursorRotationY, rotation);
 
-	Vec3 dirWASD = {};
+		position = Quaternion::rotate(cursorRotationX, position);
+		position = Quaternion::rotate(cursorRotationY, position);
+	}
 
-	double speed = 5.0;
-	if (INSTANCE(InputManager)->GetKeyState(KEY::W) == KEY_STATE::HOLD) dirWASD.z += 1.0;
-	if (INSTANCE(InputManager)->GetKeyState(KEY::A) == KEY_STATE::HOLD) dirWASD.x -= 1.0;
-	if (INSTANCE(InputManager)->GetKeyState(KEY::S) == KEY_STATE::HOLD) dirWASD.z -= 1.0;
-	if (INSTANCE(InputManager)->GetKeyState(KEY::D) == KEY_STATE::HOLD) dirWASD.x += 1.0;
-	if(dirWASD.magnitude() != 0.0)dirWASD = dirWASD.unit();
-
-	position += Quaternion::rotate(rotation, dirWASD * speed * deltaTime);
-	*/
 	
 	return true;
 }

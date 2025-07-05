@@ -55,29 +55,37 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_RENDERTEST));
 
+    bool exit = false;
     MSG msg;
+
     //PeekMessage loop
     while (true)
     {
-        if (PeekMessageA(&msg, nullptr, 0, 0, PM_REMOVE))
+        while (PeekMessageA(&msg, nullptr, 0, 0, PM_REMOVE))
         {
-            if (msg.message == WM_QUIT)
-                break;
-
-            /*
             if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
             {
                 TranslateMessage(&msg);
                 DispatchMessage(&msg);
-            }*/
+            }
+
+            switch (msg.message) {
+            case WM_QUIT:
+                exit = true;
+                break;
+
+            case WM_MOUSEWHEEL:
+                INSTANCE(InputManager)->SetScrollMovement(GET_WHEEL_DELTA_WPARAM(msg.wParam) / WHEEL_DELTA);
+                break;
+            }
         }
+
+        if (exit)break;
 
         INSTANCE(TimeManager)->update();
         INSTANCE(InputManager)->update();
 
-        currentScene->update();
-        currentScene->render();
-        currentScene->draw();
+        currentScene->advance();
 
         winMonManager->update();
 

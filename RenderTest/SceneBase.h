@@ -28,6 +28,7 @@ public:
 	bool render();
 	virtual bool draw();
 	// intended flow: init -> loop(update -> render -> draw)
+	bool advance();
 };
 
 typedef SceneBase Scene;

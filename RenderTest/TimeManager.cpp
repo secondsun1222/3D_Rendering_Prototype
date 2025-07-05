@@ -1,7 +1,8 @@
 #include "TimeManager.h"
 
 TimeManager::TimeManager()
-	: prevCount{}
+	:initCount{}
+	, prevCount{}
 	, curCount{}
 	, frequency{}
 	, DeltaTime(0.)

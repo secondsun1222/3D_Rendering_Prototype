@@ -9,8 +9,11 @@ static int VKarr[KEY::COUNT] = {
 	'A',		//RIGHT,
 	'S',		//UP,
 	'D',		//DOWN,
-	'R',		//R key
-	VK_ESCAPE,
+	'R',		//R
+	VK_ESCAPE,	//ESC
+	VK_CONTROL,	//CTRL
+	VK_RBUTTON,
+
 	//
 	//COUNT,
 };
@@ -37,12 +40,15 @@ void InputManager::init()
 	cursorMovement = { 0,0 };
 	cursorFixed = false;
 	cursorFixPosition = { 0,0 };
+	scrollMovement = 0;
+	didScroll = false;
 }
 
 void InputManager::update()
 {
 	HWND hWndFocused = GetFocus();
 
+	//check keyboard inputs
 	for (int i = 0; i < KEY::COUNT; i++)
 	{
 		// true when focused and key pressed
@@ -84,15 +90,25 @@ void InputManager::update()
 		}
 	}
 
+	// apply cursor position
 	POINT newCursorPosition;
 	GetCursorPos(&newCursorPosition);
 	cursorMovement = { newCursorPosition.x - cursorPosition.x, newCursorPosition.y - cursorPosition.y };
 	cursorPosition = newCursorPosition;
 
+	// fix cursor?
 	if (cursorFixed) {
 		SetCursorPos(cursorFixPosition.x, cursorFixPosition.y);
 		cursorPosition = cursorFixPosition;
 	}
+
+
+	// scroll controls
+	if (didScroll) {
+		scrollMovement = 0;
+		didScroll = false;
+	}
+	if (scrollMovement != 0)didScroll = true;
 }
 
 void InputManager::FixCursor(POINT _cursorFixPosition)

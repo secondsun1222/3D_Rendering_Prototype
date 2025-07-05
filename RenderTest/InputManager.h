@@ -22,6 +22,8 @@ enum class _KEY {
 	D,
 	R,
 	ESC,
+	CTRL,
+	MOUSER,
 
 	COUNT,
 };
@@ -42,6 +44,9 @@ private:
 	bool cursorFixed;
 	POINT cursorFixPosition;
 
+	int scrollMovement;
+	bool didScroll;
+
 public:
 	void init();
 	void update();
@@ -49,6 +54,8 @@ public:
 	KEY_STATE GetKeyState(KEY_TYPE k) { return keyInfo[(int)k].keyState; };
 	POINT GetCursorPosition() { return cursorPosition; }
 	POINT GetCursorMovement() { return cursorMovement; }
+	void SetScrollMovement(int _scrollMovement) { didScroll = false; scrollMovement = _scrollMovement; }
+	int GetScrollMovement() { return scrollMovement; }
 
 	void FixCursor(POINT);
 	void UnfixCursor();

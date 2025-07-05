@@ -52,7 +52,6 @@ public:
 
 public:
 	void prerender();
-	void renderMesh(Object*, Mesh*);
 	void renderMesh(Object*, Mesh*, std::vector<Object*>*);
 	void renderMesh(Object*, TexturedMesh*, std::vector<Object*>*);
 	void postrender();

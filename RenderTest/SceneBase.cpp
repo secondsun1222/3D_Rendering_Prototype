@@ -61,6 +61,14 @@ bool SceneBase::init()
 	return true;
 }
 
+bool SceneBase::advance()
+{
+	bool updateSuccess = update();
+	bool renderSuccess = render();
+	bool drawSuccess = draw();
+	return updateSuccess && renderSuccess && drawSuccess;
+}
+
 bool SceneBase::update() {
 	if (root == nullptr) return false;
 
@@ -110,7 +118,7 @@ bool SceneBase::render()
 		for (auto it : *(curObject->getChildren())) {
 			objectStack.push_back(it);
 		}
-
+		/*
 		// check for objects with mesh property
 		MeshProperty* curObjectMeshProperty = (MeshProperty*)curObject->findProperty(PropertyType::MESH);
 		if (curObjectMeshProperty != nullptr)
@@ -118,6 +126,7 @@ bool SceneBase::render()
 			Mesh* curObjectMesh = curObjectMeshProperty->mesh;
 			camera->renderMesh(curObject, curObjectMesh, getLights());
 		}
+		*/
 
 		// check for objects with textured mesh property
 		TexturedMeshProperty* curObjectTexturedMeshProperty = (TexturedMeshProperty*)curObject->findProperty(PropertyType::TEXTURED_MESH);
