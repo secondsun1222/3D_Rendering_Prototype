@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{40DF08B1-AF71-4801-A4CA-7D589F4104F8}|RenderTest\\RenderTest.vcxproj|C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\RenderTest\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{40DF08B1-AF71-4801-A4CA-7D589F4104F8}|RenderTest\\RenderTest.vcxproj|solutionrelative:RenderTest\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{40DF08B1-AF71-4801-A4CA-7D589F4104F8}|RenderTest\\RenderTest.vcxproj|C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\RenderTest\\TestScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{40DF08B1-AF71-4801-A4CA-7D589F4104F8}|RenderTest\\RenderTest.vcxproj|solutionrelative:RenderTest\\TestScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40DF08B1-AF71-4801-A4CA-7D589F4104F8}|RenderTest\\RenderTest.vcxproj|C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\RenderTest\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{40DF08B1-AF71-4801-A4CA-7D589F4104F8}|RenderTest\\RenderTest.vcxproj|solutionrelative:RenderTest\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{40DF08B1-AF71-4801-A4CA-7D589F4104F8}|RenderTest\\RenderTest.vcxproj|C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\RenderTest\\TestLightObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -46,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 264,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
@@ -98,28 +98,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "TestScene.cpp",
               "DocumentMoniker": "C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\RenderTest\\TestScene.cpp",
               "RelativeDocumentMoniker": "RenderTest\\TestScene.cpp",
               "ToolTip": "C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\RenderTest\\TestScene.cpp",
               "RelativeToolTip": "RenderTest\\TestScene.cpp",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAAAIgAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAIAAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-04T18:08:44.299Z"
+              "WhenOpened": "2025-07-04T18:08:44.299Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Camera.cpp",
               "DocumentMoniker": "C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\RenderTest\\Camera.cpp",
               "RelativeDocumentMoniker": "RenderTest\\Camera.cpp",
               "ToolTip": "C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\RenderTest\\Camera.cpp",
               "RelativeToolTip": "RenderTest\\Camera.cpp",
-              "ViewState": "AgIAACMAAAAAAAAAAAAUwBsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGcAAAAAAAAAAAAQwHwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-04T18:03:51.39Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-04T18:03:51.39Z"
             },
             {
               "$type": "Document",

@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{40DF08B1-AF71-4801-A4CA-7D589F4104F8}|RenderTest\\RenderTest.vcxproj|C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\RenderTest\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{40DF08B1-AF71-4801-A4CA-7D589F4104F8}|RenderTest\\RenderTest.vcxproj|solutionrelative:RenderTest\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{40DF08B1-AF71-4801-A4CA-7D589F4104F8}|RenderTest\\RenderTest.vcxproj|C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\RenderTest\\TestScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{40DF08B1-AF71-4801-A4CA-7D589F4104F8}|RenderTest\\RenderTest.vcxproj|solutionrelative:RenderTest\\TestScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40DF08B1-AF71-4801-A4CA-7D589F4104F8}|RenderTest\\RenderTest.vcxproj|C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\RenderTest\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{40DF08B1-AF71-4801-A4CA-7D589F4104F8}|RenderTest\\RenderTest.vcxproj|solutionrelative:RenderTest\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{40DF08B1-AF71-4801-A4CA-7D589F4104F8}|RenderTest\\RenderTest.vcxproj|C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\RenderTest\\TestLightObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -46,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 264,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
@@ -58,8 +58,7 @@
               "RelativeToolTip": "RenderTest\\TestObject.cpp",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAABYAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-05T05:55:13.072Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-05T05:55:13.072Z"
             },
             {
               "$type": "Document",
@@ -71,8 +70,7 @@
               "RelativeToolTip": "RenderTest\\InputManager.cpp",
               "ViewState": "AgIAAGQAAAAAAAAAAAAAwHEAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-05T05:52:47.7Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-05T05:52:47.7Z"
             },
             {
               "$type": "Document",
@@ -84,8 +82,7 @@
               "RelativeToolTip": "RenderTest\\InputManager.h",
               "ViewState": "AgIAACoAAAAAAAAAAADwvzwAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-05T05:52:36.797Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-05T05:52:36.797Z"
             },
             {
               "$type": "Document",
@@ -97,31 +94,30 @@
               "RelativeToolTip": "RenderTest\\TestLightObject.cpp",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAABwAAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-04T18:39:31.091Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-04T18:39:31.091Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "TestScene.cpp",
               "DocumentMoniker": "C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\RenderTest\\TestScene.cpp",
               "RelativeDocumentMoniker": "RenderTest\\TestScene.cpp",
               "ToolTip": "C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\RenderTest\\TestScene.cpp",
               "RelativeToolTip": "RenderTest\\TestScene.cpp",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAAAIgAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAHIAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-07-04T18:08:44.299Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Camera.cpp",
               "DocumentMoniker": "C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\RenderTest\\Camera.cpp",
               "RelativeDocumentMoniker": "RenderTest\\Camera.cpp",
               "ToolTip": "C:\\_SunEunChan\\KUCC\\3DDDD\\RenderTest\\RenderTest\\Camera.cpp",
               "RelativeToolTip": "RenderTest\\Camera.cpp",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAACcAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAGcAAAAAAAAAAAAQwHwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-07-04T18:03:51.39Z",
               "EditorCaption": ""
@@ -136,8 +132,7 @@
               "RelativeToolTip": "RenderTest\\TexturedMesh.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-04T17:57:50.832Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-04T17:57:50.832Z"
             },
             {
               "$type": "Document",
@@ -149,8 +144,7 @@
               "RelativeToolTip": "RenderTest\\TexturedMesh.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-04T17:57:50.176Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-04T17:57:50.176Z"
             },
             {
               "$type": "Document",
@@ -162,8 +156,7 @@
               "RelativeToolTip": "RenderTest\\RenderTest.cpp",
               "ViewState": "AgIAADYAAAAAAAAAAADwvzIAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-04T14:50:43.476Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-04T14:50:43.476Z"
             }
           ]
         }

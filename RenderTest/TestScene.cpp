@@ -60,12 +60,12 @@ bool TestScene::init()
 		TexturedMeshProperty* textMeshProp = new TexturedMeshProperty(textMesh);
 		TexturedMesh* textMesh2 = new TexturedMesh(vertexList, lineList, UVFaceList, materialList2);
 		TexturedMeshProperty* textMeshProp2 = new TexturedMeshProperty(textMesh2);
-		obj1->position = { 0,0,0 };
+		obj1->position = { 10,0,0 };
 		obj1->addProperty(textMeshProp);
 		obj1->setParent(root);
 		obj2->position = { -10,0,0 };
 		obj2->addProperty(textMeshProp2);
-		//obj2->setParent(root);
+		obj2->setParent(root);
 	}
 	Object* obj3 = new Object();
 	Object* obj4 = new Object();
@@ -99,37 +99,21 @@ bool TestScene::init()
 	}
 	{
 		TestLightObject* lightObj = new TestLightObject();
-		lightObj->position = { 10.0,0.0,-10.0 };
-		LightProperty* lightProp = new LightProperty(LightType::POSITIONAL, 10.0, RGB(255, 100, 100));
+		lightObj->position = { 0.0,0.0,-10.0 };
+		LightProperty* lightProp = new LightProperty(LightType::POSITIONAL, 10.0, RGB(255, 255, 255));
 		lightObj->addProperty(lightProp);
 
 		lightObj->setParent(root);
 	}
-	{
-		TestLightObject* lightObj = new TestLightObject();
-		lightObj->position = { -10.0,0.0,-10.0 };
-		LightProperty* lightProp = new LightProperty(LightType::POSITIONAL, 10.0, RGB(100, 255, 100));
-		lightObj->addProperty(lightProp);
-
-		lightObj->setParent(root);
-	}
-	{
-		TestLightObject* lightObj = new TestLightObject();
-		lightObj->position = { 0.0,10.0,5.0 };
-		LightProperty* lightProp = new LightProperty(LightType::POSITIONAL, 10.0, RGB(100, 100, 255));
-		lightObj->addProperty(lightProp);
-
-		lightObj->setParent(root);
-	}
-	/*
+	
 	{
 		Object* lightObj = new Object();
-		LightProperty* lightProp = new LightProperty(LightType::UNIVERSAL, 0.3, RGB(255, 255, 255));
+		LightProperty* lightProp = new LightProperty(LightType::UNIVERSAL, 0.1, RGB(255, 255, 255));
 		lightObj->addProperty(lightProp);
 
 		lightObj->setParent(root);
 	}
-	*/
+	
 
 
 
